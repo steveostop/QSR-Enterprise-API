@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: lib/QSR.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: lib/QSR.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * QSR Class File
  * @author Steve Ostopchuck
  */
@@ -38,20 +66,20 @@ class QSR {
             params.sort();
             const body = (new URLSearchParams(config.data ? config.data : '')).toString();
             const bodyHexHash = crypto.createHash('SHA256').update(body).digest('hex');
-            const canonicalRequeast = `${requestMethod}&${canonicalUrl}&${params.toString()}&${bodyHexHash}`;
+            const canonicalRequeast = `${requestMethod}&amp;${canonicalUrl}&amp;${params.toString()}&amp;${bodyHexHash}`;
 
             // Step 2: Create a String to Sign
             const algorithm = 'HMAC-SHA1';
             const isoDate = (new Date()).toISOString();
             const crHexHash = crypto.createHash('SHA256').update(canonicalRequeast).digest('hex');
-            const stringToSign = `${algorithm}&${isoDate}&${this.accessKey}&${crHexHash}`;
+            const stringToSign = `${algorithm}&amp;${isoDate}&amp;${this.accessKey}&amp;${crHexHash}`;
 
             // Step 3: Create the Signature
             const signature = crypto.createHmac('SHA1', this.secretKey).update(stringToSign).digest('hex');
 
             // Step 4: Add Sigining Inforation to the Request
             const sigVersion = 'dinetime-sv2-hmac-sha1'
-            config.headers.Authorization = `${sigVersion} Algorithm=SHA256&Credentials=${this.accessKey}&Signature=${signature}`
+            config.headers.Authorization = `${sigVersion} Algorithm=SHA256&amp;Credentials=${this.accessKey}&amp;Signature=${signature}`
             
             // Add other required headers
             config.headers['x-dinetime-timestamp'] = isoDate;
@@ -203,7 +231,7 @@ class QSR {
             data.push(...response.data.Events)
             config.params.startTime = response.data.TimeStampCutoff;
             numPages--;
-        } while (response.data.MoreData && numPages !== 0);
+        } while (response.data.MoreData &amp;&amp; numPages !== 0);
         return data;
     }
 
@@ -337,7 +365,7 @@ class QSR {
             data.push(...response.data.History)
             config.params.startTime = response.data.TimeStampCutoff;
             numPages--;
-        } while (response.data.HasMoreData && numPages !== 0);
+        } while (response.data.HasMoreData &amp;&amp; numPages !== 0);
         return data;
     }
 
@@ -388,7 +416,7 @@ class QSR {
             data.push(...response.data.Events)
             config.params.startTime = response.data.TimeStampCutoff;
             numPages--;
-        } while (response.data.MoreData && numPages !== 0);
+        } while (response.data.MoreData &amp;&amp; numPages !== 0);
         return data;
     }
 
@@ -670,7 +698,7 @@ class QSR {
             });
             config.params = { Token: response.data.Token };
             numSites--;
-        } while (response.data.HasMore && numSites !== 0);
+        } while (response.data.HasMore &amp;&amp; numSites !== 0);
         return data;
     }
 
@@ -761,7 +789,7 @@ class QSR {
             method: 'GET',
             params: {}
         };
-        for (let i = 0; i < partySizes.length; i++) params[`PartySize${i+1}`] = Math.floor(partySizes[i]);   
+        for (let i = 0; i &lt; partySizes.length; i++) params[`PartySize${i+1}`] = Math.floor(partySizes[i]);   
         const response = await this.axios.request(config).catch(this.#errorHandler);
         return response.data;
     }
@@ -778,8 +806,8 @@ class QSR {
             method: 'GET',
             params: {}
         };
-        for (let i = 0; i < siteUIDs.length; i++) params[`SiteUID${i+1}`] = siteUIDs[i];   
-        for (let i = 0; i < partySizes.length; i++) params[`PartySize${i+1}`] = Math.floor(partySizes[i]);   
+        for (let i = 0; i &lt; siteUIDs.length; i++) params[`SiteUID${i+1}`] = siteUIDs[i];   
+        for (let i = 0; i &lt; partySizes.length; i++) params[`PartySize${i+1}`] = Math.floor(partySizes[i]);   
         const response = await this.axios.request(config).catch(this.#errorHandler);
         return response.data;
     }
@@ -1726,7 +1754,7 @@ module.exports = QSR;
  * @property {TeamMemberEventContent} Content - Content of the event.
  * @property {string} LastUpdate - Last update timestamp of the event, in ISO 8601 format.
  * @property {string} ServerLastUpdate - Server last update timestamp of the event, in ISO 8601 format.
- * @property {string} SyncSource - Sync source of the event. See Standard Parameters & DTOs.
+ * @property {string} SyncSource - Sync source of the event. See Standard Parameters &amp; DTOs.
  * @property {string} Type - Type of event.
  * @property {string} UID - Globally unique identifier of the event.
  * @property {string} Version - Version of the event.
@@ -1997,4 +2025,26 @@ module.exports = QSR;
  * @property {string} ExternalSiteID - External ID of the site.
  * @property {boolean} HasMore - Indicates if additional page(s) are available. True or False.
  * @property {string} Token - A token which can be provided as the Token URL parameter to retrieve the next page of sites.
- */
+ */</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-QSR-Enterprise-api.html">QSR-Enterprise-api</a></li></ul><h3>Classes</h3><ul><li><a href="QSR.html">QSR</a></li></ul><h3>Global</h3><ul><li><a href="global.html#crypto">crypto</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Apr 06 2022 22:12:58 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
