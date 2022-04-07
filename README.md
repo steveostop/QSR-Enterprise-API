@@ -6,6 +6,9 @@ The module exposes a QSR Class, see [docs/qsr-enterprise-api/0.1.0/QSR.html](/do
 *This package is in need of thorough testing.*
 
 ## Quickstart:
+```
+npm i qsr-enterprise-api
+```
 ```javascript
 const QSR = require('qsr-enterprise-api');
 
