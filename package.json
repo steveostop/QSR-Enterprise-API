@@ -1,6 +1,6 @@
 {
   "name": "qsr-enterprise-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A node package for interacting with the QSR Automations' Enterprise API",
   "main": "index.js",
   "scripts": {
