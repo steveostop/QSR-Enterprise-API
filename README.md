@@ -1,9 +1,7 @@
 # QSR-Enterprise-API
 An NPM package for interaction with QSR Automation's Enterprise API.
-
 The module exposes a QSR Class, see [docs/qsr-enterprise-api/0.1.0/QSR.html](/docs/qsr-enterprise-api/0.1.0/QSR.html)
-
-*This package is in need to thorough testing.*
+*This package is in need of thorough testing.*
 
 ## Quickstart:
 ```javascript
