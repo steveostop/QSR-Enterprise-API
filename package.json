@@ -1,12 +1,16 @@
 {
   "name": "qsr-enterprise-api",
   "version": "0.1.0",
-  "description": "A node package for interacting with the QSR Enterprise API",
+  "description": "A node package for interacting with the QSR Automations' Enterprise API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Steve Ostopchuck (sostopchuck@bottleneckmgmt.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/steveostop/QSR-Enterprise-API.git"
+  },
+  "author": "Steve Ostopchuck <sostopchuck@bottleneckmgmt.com>",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.26.1"
