@@ -27,6 +27,8 @@ const getVisits = async () => {
     const visits = await qsr.getAllVisitUpdates(siteUID, yesterday, today).catch(err => {
         console.error(err);
     })
+    
+    console.log(visits.length);
 };
 
 getVisits();
